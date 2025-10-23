@@ -65,14 +65,15 @@ Cancel or complete an appointment
 bash
 Copy code
 dart run lib/ui/console_app.dart
+```
+---
 
--Deliverables-
+## Deliverables-
 Date	Deliverable
 Nov 02	UML Diagram + Project Code
 Nov 03	Project Jury Presentation
 
-👤 Author
-
+## Author
 Developed by EANG HAYSAN
 MOBILE DEVELOPMENT 1 — Dart OOP Project
 [CADT / Fundamental Mobile Development ]

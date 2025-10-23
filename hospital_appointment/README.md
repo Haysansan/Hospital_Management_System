@@ -25,7 +25,20 @@ Data Layer → In-memory / optional file-based persistence
 
 ## Folder Structure
 
-<pre> ```text hospital_appointment/ ├── lib/ │ ├── data/ │ │ └── appointment_repository.dart │ ├── domain/ │ │ └── domain.dart │ ├── main.dart │ └── ui/ │ └── console.dart ├── pubspec.yaml ├── README.md └── test/ └── domain_test.dart ``` </pre>
+```text
+hospital_appointment/
+├── lib/
+│   ├── data/
+│   │   └── appointment_repository.dart
+│   ├── domain/
+│   │   └── domain.dart
+│   ├── main.dart
+│   └── ui/
+│       └── console.dart
+├── pubspec.yaml
+├── README.md
+└── test/
+    └── domain_test.dart
 
 ## Core Classes
 - **Person** — Abstract base for shared attributes

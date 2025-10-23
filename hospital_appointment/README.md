@@ -38,7 +38,9 @@ hospital_appointment/
 ├── pubspec.yaml
 ├── README.md
 └── test/
-    └── domain_test.dart```
+    └── domain_test.dart
+```
+---
 
 
 ## Core Classes

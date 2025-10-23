@@ -1,0 +1,24 @@
+# Dart/Pub
+.dart_tool/
+.packages
+.pub/
+build/
+pubspec.lock
+
+# VS Code
+.vscode/
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+
+# MacOS
+.DS_Store
+
+# Logs
+*.log
+
+# Optional: Generated files
+bin/*.exe
+bin/*.dll
+bin/*.obj

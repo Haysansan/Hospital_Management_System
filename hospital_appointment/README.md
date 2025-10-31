@@ -64,14 +64,17 @@ Cancel or complete an appointment
 ▶ Run the Application
 bash
 Copy code
-dart run lib/ui/console_app.dart
+dart run lib/main.dart
+ or
+dart .\lib\main.dart
+
 ```
 ---
 
 ## Deliverables-
 Date	Deliverable
-Nov 02	UML Diagram + Project Code
-Nov 03	Project Jury Presentation
+Nov 06	UML Diagram + Project Code
+Nov 07	Project Jury Presentation
 
 ## Author
 Developed by EANG HAYSAN

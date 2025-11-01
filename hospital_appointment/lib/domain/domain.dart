@@ -46,27 +46,27 @@ class Patient extends Person {
   });
 }
 
-class Prescription {
-  final int id;
-  final Doctor doctor;
-  final Patient patient;
-  final String medication;
-  final String dosage;
-  final String instruction;
+// class Prescription {
+//   final int id;
+//   final Doctor doctor;
+//   final Patient patient;
+//   final String medication;
+//   final String dosage;
+//   final String instruction;
 
-  Prescription({
-    required this.id,
-    required this.doctor,
-    required this.patient,
-    required this.medication,
-    required this.dosage,
-    required this.instruction,
-  });
+//   Prescription({
+//     required this.id,
+//     required this.doctor,
+//     required this.patient,
+//     required this.medication,
+//     required this.dosage,
+//     required this.instruction,
+//   });
 
-  bool validate() {
-    return medication.isNotEmpty && dosage.isNotEmpty && instruction.isNotEmpty;
-  }
-}
+//   bool validate() {
+//     return medication.isNotEmpty && dosage.isNotEmpty && instruction.isNotEmpty;
+//   }
+// }
 
 class Appointment {
   final int id;
@@ -106,7 +106,7 @@ class HospitalManagement {
   final List<Doctor> doctors = [];
   final List<Patient> patients = [];
   final List<Appointment> appointments = [];
-  final List<Prescription> prescriptions = [];
+  // final List<Prescription> prescriptions = [];
   final List<Schedules> schedules = [];
 
   void addDoctor(Doctor doctor) => doctors.add(doctor);
@@ -129,23 +129,23 @@ class HospitalManagement {
     doctor.schedules?.addAppointment(appointment);
   }
 
-  void issuePrescription(
-    Doctor doctor,
-    Patient patient,
-    String medication,
-    String dosage,
-    String instruction,
-  ) {
-    final prescription = Prescription(
-      id: prescriptions.length + 1,
-      doctor: doctor,
-      patient: patient,
-      medication: medication,
-      dosage: dosage,
-      instruction: instruction,
-    );
-    prescriptions.add(prescription);
-  }
+  // void issuePrescription(
+  //   Doctor doctor,
+  //   Patient patient,
+  //   String medication,
+  //   String dosage,
+  //   String instruction,
+  // ) {
+  //   final prescription = Prescription(
+  //     id: prescriptions.length + 1,
+  //     doctor: doctor,
+  //     patient: patient,
+  //     medication: medication,
+  //     dosage: dosage,
+  //     instruction: instruction,
+  //   );
+  //   prescriptions.add(prescription);
+  // }
 
   String viewSchedule(Doctor doctor) {
     if (doctor.schedules == null || doctor.schedules!.appointments.isEmpty) {

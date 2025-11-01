@@ -161,5 +161,27 @@ class ConsoleUI {
           '| Date: ${a.date}'
           '| Status: ${a.status}');
     }
+    // Ai generated for remove appointment
+
+    print('\nOptions:');
+    print('1. Remove an appointment');
+    stdout.write('Choose option: ');
+    final choice = stdin.readLineSync();
+
+    if (choice == '1') {
+      stdout.write('Enter appointment number to remove: ');
+      final input = stdin.readLineSync();
+      final index = int.tryParse(input ?? '') ?? 0;
+
+      if (index < 1 || index > hospital.appointments.length) {
+        print('Invalid appointment number.');
+      }
+
+      final appointment = hospital.appointments[index - 1];
+      hospital.cancelAppointment(appointment);
+      print('Appointment removed successfully.');
+    } else {
+      print('Invalid option.');
+    }
   }
 }

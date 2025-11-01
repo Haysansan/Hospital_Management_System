@@ -36,6 +36,7 @@ class Doctor extends Person {
 
 class Patient extends Person {
   final String medicalHistory;
+  List<Appointment> appointments = [];
 
   Patient({
     required super.id,
@@ -113,12 +114,14 @@ class HospitalManagement {
   void addDoctor(Doctor doctor) => doctors.add(doctor);
   void addPatient(Patient patient) => patients.add(patient);
 
+  // assign schedule to doctor
   void assignSchedule(Doctor doctor, Schedules schedule) {
     doctor.schedules = schedule;
     schedule.doctor = doctor;
     schedules.add(schedule);
   }
 
+  // assign new appointment
   void scheduleAppointment(Doctor doctor, Patient patient, DateTime date) {
     final appointment = Appointment(
       id: appointments.length + 1,
@@ -133,6 +136,14 @@ class HospitalManagement {
     doctor.schedules ??=
         Schedules(id: schedules.length + 1); // Ai Generated for null check
     doctor.schedules!.addAppointment(appointment);
+    patient.appointments.add(appointment);
+  }
+
+  void cancelAppointment(Appointment appointment) {
+    appointments.remove(appointment);
+    appointment.doctor.appointments.remove(appointment);
+    appointment.doctor.schedules?.removeAppointment(appointment);
+    appointment.patient.appointments.remove(appointment);
   }
 
   // void issuePrescription(

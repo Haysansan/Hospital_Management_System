@@ -1,8 +1,10 @@
 import '../lib/domain/domain.dart';
+import '../lib/data/appointment_repository.dart';
 
 main() {
   // === Test 1: Add Doctor and Patient ===
   test('Doctor and Patient creation', () {
+    HospitalManagement hospital = HospitalManagement();
     Doctor d1 = Doctor(
       id: 1,
       name: "Dr. Smith",
@@ -21,7 +23,6 @@ main() {
       medicalHistory: "Asthma",
     );
 
-    HospitalManagement hospital = HospitalManagement();
     hospital.addDoctor(d1);
     hospital.addPatient(p1);
 
@@ -84,26 +85,83 @@ main() {
       medicalHistory: "Allergy",
     );
 
-    Schedules schedule = Schedules(
+    hospital.addDoctor(doctor);
+    hospital.addPatient(patient);
+    hospital.scheduleAppointment(doctor, patient, DateTime(2025, 1, 2));
+
+    final view = hospital.viewSchedule(doctor);
+    expect(view.contains("Dr. Adams"), equals(true));
+    expect(view.contains("Lena"), equals(true));
+  });
+
+  // === Test 4: Saving and Loading Appointments ===
+  test('Save and load appointments to file', () {
+    HospitalManagement hospital = HospitalManagement();
+    AppointmentRepository repo =
+        AppointmentRepository(filePath: 'test_appointments.json');
+
+    Doctor doctor = Doctor(
       id: 1,
-      doctor: doctor,
+      name: "Dr. Morgan",
+      age: 38,
+      gender: "Female",
+      contactNumber: "999888777",
+      specialization: "Cardiology",
+    );
+
+    Patient patient = Patient(
+      id: 1,
+      name: "David",
+      age: 44,
+      gender: "Male",
+      contactNumber: "777888999",
+      medicalHistory: "Heart condition",
     );
 
     hospital.addDoctor(doctor);
     hospital.addPatient(patient);
-    hospital.assignSchedule(doctor, schedule);
+    hospital.scheduleAppointment(doctor, patient, DateTime(2025, 2, 15));
 
-    final date = DateTime(2025, 1, 2);
-    hospital.scheduleAppointment(doctor, patient, date);
+    repo.save(hospital.appointments);
+    final loaded = repo.load(hospital.doctors, hospital.patients);
 
-    String view = hospital.viewSchedule(doctor);
+    expect(loaded.length, equals(1));
+    expect(loaded.first.doctor.name, equals("Dr. Morgan"));
+    expect(loaded.first.patient.name, equals("David"));
+  });
 
-    expect(view.contains("Dr. Adams"), equals(true));
-    expect(view.contains("Lena"), equals(true));
+  // === Test 5: Handling invalid appointment (no doctor/patient) ===
+  test('Handle appointment creation with missing doctor or patient', () {
+    HospitalManagement hospital = HospitalManagement();
+
+    try {
+      hospital.scheduleAppointment(
+        Doctor(
+          id: 1,
+          name: "Dr. Test",
+          age: 40,
+          gender: "Male",
+          contactNumber: "000111222",
+          specialization: "Testing",
+        ),
+        Patient(
+          id: 1,
+          name: "Tester",
+          age: 20,
+          gender: "Female",
+          contactNumber: "111000999",
+          medicalHistory: "None",
+        ),
+        DateTime.now(),
+      );
+      expect(true, equals(true)); // Success
+    } catch (e) {
+      expect(false, equals(true)); // Fail
+    }
   });
 }
 
-// === Dummy Test Framework (for simple Dart run without package:test) ===
+// === Dummy Test Framework (for simple Dart run without package:test) === // AI Generated for easier testing
 void test(String description, void Function() body) {
   try {
     body();

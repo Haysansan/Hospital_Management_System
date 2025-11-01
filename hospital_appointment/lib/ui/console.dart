@@ -158,7 +158,8 @@ class ConsoleUI {
       final a = hospital.appointments[i];
       print('${i + 1}. Doctor: ${a.doctor.name} (${a.doctor.specialization}) '
           '| Patient: ${a.patient.name} '
-          '| Date: ${a.date}');
+          '| Date: ${a.date}'
+          '| Status: ${a.status}');
     }
   }
 }

@@ -147,6 +147,7 @@ class HospitalManagement {
   //   prescriptions.add(prescription);
   // }
 
+  // Ai Generated for cleaner result
   String viewSchedule(Doctor doctor) {
     if (doctor.schedules == null || doctor.schedules!.appointments.isEmpty) {
       return '${doctor.name} has no scheduled appointments.';

@@ -20,6 +20,7 @@ class Person {
 
 class Doctor extends Person {
   final String specialization;
+  List<Appointment> appointments = [];
   Schedules? schedules;
 
   Doctor({
@@ -124,9 +125,14 @@ class HospitalManagement {
       doctor: doctor,
       patient: patient,
       date: date,
+      status: 'Scheduled',
     );
+
     appointments.add(appointment);
-    doctor.schedules?.addAppointment(appointment);
+    doctor.appointments.add(appointment);
+    doctor.schedules ??=
+        Schedules(id: schedules.length + 1); // Ai Generated for null check
+    doctor.schedules!.addAppointment(appointment);
   }
 
   // void issuePrescription(

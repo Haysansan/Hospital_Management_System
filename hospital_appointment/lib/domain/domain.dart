@@ -90,7 +90,12 @@ class Appointment {
   });
 
   void schedules() {
-    // In real logic, this could notify patients
+    print(
+        'Appointment scheduled for ${patient.name} with Dr. ${doctor.name} on ${date.toLocal()}');
+  }
+
+  void addNotes(String note) {
+    notes = note;
   }
 }
 
@@ -106,6 +111,8 @@ class Schedules {
 
   void addAppointment(Appointment a) => appointments.add(a);
   void removeAppointment(Appointment a) => appointments.remove(a);
+  void addAppointmentNotes(int appointmentId, String note) =>
+      appointments.firstWhere((a) => a.id == appointmentId).notes = note;
 }
 
 class HospitalManagement {

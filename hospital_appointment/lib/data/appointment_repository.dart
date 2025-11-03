@@ -31,6 +31,7 @@ class AppointmentRepository {
       'patientId': a.patient.id,
       'date': a.date.toIso8601String(),
       'status': a.status,
+      'notes': a.notes,
     };
   }
 
@@ -48,6 +49,7 @@ class AppointmentRepository {
       patient: patient,
       date: DateTime.parse(json['date']),
       status: json['status'] ?? 'Scheduled',
+      notes: json['notes'],
     );
   }
 }

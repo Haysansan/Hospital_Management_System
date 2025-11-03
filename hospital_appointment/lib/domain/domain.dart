@@ -1,8 +1,10 @@
+enum Gender { male, female }
+
 class Person {
   final int id;
   final String name;
   final int age;
-  final String gender;
+  final Gender gender;
   final String contactNumber;
 
   Person({
@@ -76,12 +78,14 @@ class Appointment {
   final Patient patient;
   final DateTime date;
   final String status;
+  String? notes;
 
   Appointment({
     required this.id,
     required this.doctor,
     required this.patient,
     required this.date,
+    this.notes,
     this.status = 'Scheduled',
   });
 
@@ -129,6 +133,7 @@ class HospitalManagement {
       patient: patient,
       date: date,
       status: 'Scheduled',
+      notes: '',
     );
 
     appointments.add(appointment);
@@ -144,6 +149,10 @@ class HospitalManagement {
     appointment.doctor.appointments.remove(appointment);
     appointment.doctor.schedules?.removeAppointment(appointment);
     appointment.patient.appointments.remove(appointment);
+  }
+
+  void addAppointmentNotes(Appointment appointment, String text) {
+    appointment.notes = text;
   }
 
   // void issuePrescription(

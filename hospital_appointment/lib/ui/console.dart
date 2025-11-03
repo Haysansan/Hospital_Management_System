@@ -50,13 +50,26 @@ class ConsoleUI {
     }
   }
 
+  Gender _parseGender(String input) {
+    switch (input.toLowerCase()) {
+      case 'male':
+        return Gender.male;
+      case 'female':
+        return Gender.female;
+      default:
+        print('Invalid input, defaulting to male.');
+        return Gender.male;
+    }
+  }
+
   void _addDoctor() {
     stdout.write('Enter doctor name: ');
     final name = stdin.readLineSync() ?? '';
     stdout.write('Enter age: ');
     final age = stdin.readLineSync() ?? '';
     stdout.write('Enter gender: ');
-    final gender = stdin.readLineSync() ?? '';
+    final genderInput = stdin.readLineSync() ?? '';
+    final gender = _parseGender(genderInput);
     stdout.write('Enter contact number: ');
     final contact = stdin.readLineSync() ?? '';
     stdout.write('Enter specialization: ');
@@ -80,7 +93,8 @@ class ConsoleUI {
     stdout.write('Enter age: ');
     final age = stdin.readLineSync() ?? '';
     stdout.write('Enter gender: ');
-    final gender = stdin.readLineSync() ?? '';
+    final genderInput = stdin.readLineSync() ?? '';
+    final gender = _parseGender(genderInput);
     stdout.write('Enter contact number: ');
     final contact = stdin.readLineSync() ?? '';
     stdout.write('Enter medical history: ');
@@ -159,12 +173,14 @@ class ConsoleUI {
       print('${i + 1}. Doctor: ${a.doctor.name} (${a.doctor.specialization}) '
           '| Patient: ${a.patient.name} '
           '| Date: ${a.date}'
-          '| Status: ${a.status}');
+          '| Status: ${a.status}'
+          '| Notes: ${a.notes ?? "No notes"}');
     }
     // Ai generated for remove appointment
 
     print('\nOptions:');
     print('1. Remove an appointment');
+    print('2. Add/Edit appointment notes');
     stdout.write('Choose option: ');
     final choice = stdin.readLineSync();
 
@@ -175,11 +191,25 @@ class ConsoleUI {
 
       if (index < 1 || index > hospital.appointments.length) {
         print('Invalid appointment number.');
+        return;
       }
 
       final appointment = hospital.appointments[index - 1];
       hospital.cancelAppointment(appointment);
       print('Appointment removed successfully.');
+    } else if (choice == '2') {
+      stdout.write('Enter appointment number to add notes: ');
+      final input = stdin.readLineSync();
+      final index = int.tryParse(input ?? '') ?? 0;
+
+      if (index < 1 || index > hospital.appointments.length) {
+        print('Invalid appointment number.');
+        return;
+      }
+      final appointment = hospital.appointments[index - 1];
+      stdout.write('Enter notes for this appointment: ');
+      appointment.notes = stdin.readLineSync();
+      print('Notes added successfully.');
     } else {
       print('Invalid option.');
     }

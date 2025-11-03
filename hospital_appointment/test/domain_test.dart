@@ -9,7 +9,7 @@ main() {
       id: 1,
       name: "Dr. Smith",
       age: 45,
-      gender: "Male",
+      gender: Gender.male,
       contactNumber: "123456789",
       specialization: "Cardiology",
     );
@@ -18,7 +18,7 @@ main() {
       id: 1,
       name: "Alice",
       age: 29,
-      gender: "Female",
+      gender: Gender.female,
       contactNumber: "987654321",
       medicalHistory: "Asthma",
     );
@@ -38,7 +38,7 @@ main() {
       id: 1,
       name: "Dr. Grey",
       age: 40,
-      gender: "Female",
+      gender: Gender.female,
       contactNumber: "111222333",
       specialization: "Neurology",
     );
@@ -47,7 +47,7 @@ main() {
       id: 1,
       name: "John Doe",
       age: 35,
-      gender: "Male",
+      gender: Gender.male,
       contactNumber: "555666777",
       medicalHistory: "Diabetes",
     );
@@ -71,7 +71,7 @@ main() {
       id: 1,
       name: "Dr. Adams",
       age: 50,
-      gender: "Male",
+      gender: Gender.male,
       contactNumber: "333222111",
       specialization: "Dermatology",
     );
@@ -80,7 +80,7 @@ main() {
       id: 1,
       name: "Lena",
       age: 22,
-      gender: "Female",
+      gender: Gender.female,
       contactNumber: "444555666",
       medicalHistory: "Allergy",
     );
@@ -104,7 +104,7 @@ main() {
       id: 1,
       name: "Dr. Morgan",
       age: 38,
-      gender: "Female",
+      gender: Gender.female,
       contactNumber: "999888777",
       specialization: "Cardiology",
     );
@@ -113,7 +113,7 @@ main() {
       id: 1,
       name: "David",
       age: 44,
-      gender: "Male",
+      gender: Gender.male,
       contactNumber: "777888999",
       medicalHistory: "Heart condition",
     );
@@ -140,7 +140,7 @@ main() {
           id: 1,
           name: "Dr. Test",
           age: 40,
-          gender: "Male",
+          gender: Gender.male,
           contactNumber: "000111222",
           specialization: "Testing",
         ),
@@ -148,7 +148,7 @@ main() {
           id: 1,
           name: "Tester",
           age: 20,
-          gender: "Female",
+          gender: Gender.female,
           contactNumber: "111000999",
           medicalHistory: "None",
         ),
